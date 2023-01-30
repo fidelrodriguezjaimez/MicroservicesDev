@@ -20,6 +20,6 @@ metadata:
       spec:
         containers:
         - name: gateway-app
-          image: fidelrdgzjmz/serviciosapigateway:latest
+          image: fidelrdgzjmz/serviciosapigateway:v2.#{Build.BuildId}#
           ports:
             - containerPort: 80

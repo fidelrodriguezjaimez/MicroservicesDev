@@ -20,7 +20,7 @@ metadata:
       spec:
         containers:
           - name: microservice-libreria-app
-            image: fidelrdgzjmz/serviciosapilibreria:latest
+            image: fidelrdgzjmz/serviciosapilibreria:v2.#{Build.BuildId}#
             ports:
               - containerPort: 80
             env:
