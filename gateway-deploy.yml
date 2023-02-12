@@ -5,21 +5,21 @@ metadata:
   labels:
     name: gateway-deploy
     app: microservice
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+      type: microservice
+  template:
+    metadata:
+      name: gateway-pod
+      labels:
         app: gateway
         type: microservice
-    template:
-      metadata:
-        name: gateway-pod
-        labels:
-          app: gateway
-          type: microservice
-      spec:
-        containers:
-        - name: gateway-app
-          image: fidelrdgzjmz/serviciosapigateway:v2.#{Build.BuildId}#
-          ports:
-            - containerPort: 80
+    spec:
+      containers:
+      - name: gateway-app
+        image: fidelrdgzjmz/serviciosapigateway:v2.#{Build.BuildId}#
+        ports:
+          - containerPort: 80
