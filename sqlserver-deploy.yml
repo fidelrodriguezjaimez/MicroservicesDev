@@ -11,7 +11,7 @@ spec:
     matchLabels:
       app: microservice-seguridad
       name: mssql-pod
-  templates:
+  template:
     metadata:
       name: mssql-pod
       labels:
