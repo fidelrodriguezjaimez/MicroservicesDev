@@ -7,7 +7,7 @@ metadata:
     name: microservice-seguridad
 spec:
   replicas: 1
-  select:
+  selector:
     matchLabels:
       app: microservice-seguridad
       name: mssql-pod
@@ -21,10 +21,10 @@ spec:
       containers:
         - name: mssql
           image: mcr.microsoft.com/mssql/server
+          ports:
+            - containerPort: 1433
           env: 
           - name: ACCEPT_EULA
             value: "Y"
           - name: SA_PASSWORD
             value: "$VaxiDrez2025"
-          ports:
-            - containerPort: 1433
