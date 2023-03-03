@@ -31,7 +31,7 @@ namespace Servicios.api.Gateway
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddControllers();
+            services.AddControllers();
             services.AddOcelot();
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("C7q3FBCJZq0bIRRH0Dq4lxWuBipEBkHX"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -45,25 +45,9 @@ namespace Servicios.api.Gateway
                 };
             });
 
-            services.AddSwaggerGen(options =>
+            services.AddSwaggerGen(c =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "ToDo API",
-                    Description = "An ASP.NET Core Web API for managing ToDo items",
-                    TermsOfService = new Uri("https://example.com/terms"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Example Contact",
-                        Url = new Uri("https://example.com/contact")
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Example License",
-                        Url = new Uri("https://example.com/license")
-                    }
-                });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Servicios.api.GateWay", Version = "v1" });
             });
 
 
@@ -89,7 +73,7 @@ namespace Servicios.api.Gateway
             app.UseSwagger();
             app.UseSwaggerUI(); app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Servicios.api.GateWay v1"));
                 options.RoutePrefix = string.Empty;
             });
 
